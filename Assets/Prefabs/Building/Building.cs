@@ -1,0 +1,56 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Building : MonoBehaviour {
+
+
+    public Transform RadioMastAnchorPoint;
+    public Color originalColor;
+
+    public bool isHovering = false;
+    public bool hoverEnter = true;
+
+    public bool hasRadioMastOn = false;
+
+    public void Awake() {
+        originalColor = GetComponent<Renderer>().material.color;
+    }
+
+    public void Update() {
+        if (isHovering) {
+            isHovering = false;
+        } else {
+            hoverEnter = true;
+            this.transform.GetComponent<Renderer>().material.color = originalColor;
+        }
+    }
+
+    public void OnClick (GameObject radioMast) {
+
+        /*
+         * Debug
+         */
+        this.transform.GetComponent<Renderer>().material.color = Color.red;
+
+        if (!hasRadioMastOn) {
+            GameObject RM = Instantiate(radioMast, RadioMastAnchorPoint.position, RadioMastAnchorPoint.rotation);
+            RM.transform.SetParent(this.transform);
+            hasRadioMastOn = true;
+        }
+       
+    }
+
+    public void OnHover () {
+        if (hoverEnter == true) {
+            this.transform.GetComponent<Renderer>().material.color = Color.green;
+            hoverEnter = false;
+        }
+        isHovering = true; 
+    }
+
+    public void FreeRoof() {
+        hasRadioMastOn = false;
+    }
+
+}
