@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 28.01.2018 00:10:37
+# File Created: 28.01.2018 00:15:15
 
 mtllib Headquarter.mtl
 
@@ -6639,7 +6639,7 @@ vt 0.4271 0.9004 0.0000
 # 639 texture coords
 
 g Headquarter_ColorGeometry
-usemtl Headquarter
+usemtl Headquarter_ColorGeometry
 s 1
 f 1295/2058/319 1296/2059/319 1297/2060/320 1298/2061/320 
 f 1299/2062/321 1300/2063/319 1301/2064/320 1302/2065/321 
