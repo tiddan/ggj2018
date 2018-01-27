@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/City3.unity
+    guid: f1bbd01b66b1caf4baeaaaa04efe9331
+  - enabled: 1
     path: Assets/Scenes/RTSControllerTest.unity
     guid: 3213f3e6cb19c4e4a8d9f489050d449e
   - enabled: 1
