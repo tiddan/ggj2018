@@ -66,8 +66,6 @@ public class Building : MonoBehaviour {
                 isHovering = true;
                 break;
         }
-
-
        
     }
 
