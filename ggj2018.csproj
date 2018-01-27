@@ -286,6 +286,7 @@
     <Compile Include="Assets\Models\DummyMod.cs" />
     <Compile Include="Assets\Particles\DummyPS.cs" />
     <Compile Include="Assets\Prefabs\Building\Building.cs" />
+    <Compile Include="Assets\Prefabs\NPCs\Simple\SimpleNPC.cs" />
     <Compile Include="Assets\Prefabs\RadioMast\RadioMast.cs" />
     <Compile Include="Assets\Scripts\Camera\RTSCamera.cs" />
     <Compile Include="Assets\Scripts\DummyScr.cs" />
