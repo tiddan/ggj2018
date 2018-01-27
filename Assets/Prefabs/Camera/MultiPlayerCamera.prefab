@@ -101,7 +101,9 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  radioMastPrefab: {fileID: 1231629753547662, guid: 741a3a6dbb7942648bac663f560c74db,
+  BLUPointer: {fileID: 0}
+  REDPointer: {fileID: 0}
+  radioMastPrefab: {fileID: 1605337867004436, guid: 0b9c7d905809c45458a40e213d1cce9f,
     type: 2}
 --- !u!124 &124012591400322456
 Behaviour:
