@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 195816534401730462}
   m_Layer: 0
   m_Name: AgentAnimated
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1118,6 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   currentInfluence: 0
+  renderer: {fileID: 137469761276798596}
   maxSpeed: 10
   blueInfluence: 0
   redInfluence: 0
@@ -1215,10 +1216,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.2
-  m_Speed: 0.5
-  m_Acceleration: 8
+  m_Speed: 1
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 1000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
