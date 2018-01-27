@@ -15,7 +15,7 @@ public class TestPlayerController : MonoBehaviour {
 		movementVector = movementVector.normalized;
 
 		transform.eulerAngles = Vector3.up * Mathf.Atan2 (movementVector.x, movementVector.y) * Mathf.Rad2Deg;
-		transform.Translate(transform.forward * 50 * Time.deltaTime, Space.World);
+		transform.Translate(transform.forward * 5 * Time.deltaTime, Space.World);
 
 	}
 }
