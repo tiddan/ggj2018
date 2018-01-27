@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1940065090380004}
   m_LocalRotation: {x: 0.5462874, y: -0, z: -0, w: 0.83759785}
-  m_LocalPosition: {x: 0, y: 35.21, z: -16.545}
+  m_LocalPosition: {x: 0, y: 30.59, z: -15.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  radioMastPrefab: {fileID: 1231629753547662, guid: 741a3a6dbb7942648bac663f560c74db,
+  radioMastPrefab: {fileID: 1605337867004436, guid: 0b9c7d905809c45458a40e213d1cce9f,
     type: 2}
 --- !u!124 &124806350344952922
 Behaviour:

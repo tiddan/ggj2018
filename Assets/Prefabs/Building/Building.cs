@@ -26,12 +26,22 @@ public class Building : MonoBehaviour {
         }
     }
 
-    public void OnClick (GameObject radioMast) {
+    public void OnClick (GameObject radioMast, string influencer) {
 
         /*
          * Debug
          */
-        this.transform.GetComponent<Renderer>().material.color = Color.red;
+        switch (influencer) {
+            case "BLU":
+                this.transform.GetComponent<Renderer>().material.color = Color.blue;
+                break;
+            case "RED":
+                this.transform.GetComponent<Renderer>().material.color = Color.red;
+                break;
+            default:
+                break;
+        }
+        
 
         if (!hasRadioMastOn) {
             GameObject RM = Instantiate(radioMast, RadioMastAnchorPoint.position, RadioMastAnchorPoint.rotation);
@@ -66,8 +76,6 @@ public class Building : MonoBehaviour {
                 isHovering = true;
                 break;
         }
-
-
        
     }
 
