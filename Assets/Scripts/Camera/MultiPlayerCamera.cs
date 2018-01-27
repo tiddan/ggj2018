@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RTSCamera : MonoBehaviour {
+public class MultiPlayerCamera : MonoBehaviour {
 
 
     public float maxRange = 1000f;
 
     public LayerMask hitMask;
 
+    public GameObject BLUPointer, REDPointer;
 
 
     public GameObject radioMastPrefab;
@@ -22,27 +23,49 @@ public class RTSCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-       
-        OnHover(ray);
+
+
+        HandleInput();
+
+
+        Ray BLUray = Camera.main.ScreenPointToRay(BLUPointer.GetComponent<RectTransform>().position);
+        OnBLUHover(BLUray);
+
+        Ray REDray = Camera.main.ScreenPointToRay(REDPointer.GetComponent<RectTransform>().position);
+        OnREDHover(REDray);
 
         if (Input.GetMouseButtonUp(0) ) {
-            OnClick(ray);
+           // OnClick(ray);
         }
 
 	}
 
-    public void OnHover(Ray ray) {
+    void HandleInput() {
+
+    }
+
+
+
+    public void OnBLUHover(Ray ray) {
         RaycastHit hit;
         if (Physics.Raycast(ray.origin, ray.direction, out hit, maxRange, hitMask)) {
             Debug.DrawLine(Camera.main.ScreenPointToRay(Input.mousePosition).origin, hit.point, Color.cyan);
 
             if (hit.transform.tag == "Building") {
+                hit.transform.GetComponent<Building>().OnHover("BLU");
+            }
+        }
+    }
+
+    public void OnREDHover(Ray ray) {
+        RaycastHit hit;
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, maxRange, hitMask)) {
+            Debug.DrawLine(Camera.main.ScreenPointToRay(Input.mousePosition).origin, hit.point, Color.magenta);
+
+            if (hit.transform.tag == "Building") {
                 hit.transform.GetComponent<Building>().OnHover("RED");
             }
         }
-
-        
     }
 
     public void OnClick (Ray ray) {

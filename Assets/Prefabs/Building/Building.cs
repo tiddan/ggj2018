@@ -41,12 +41,34 @@ public class Building : MonoBehaviour {
        
     }
 
-    public void OnHover () {
-        if (hoverEnter == true) {
-            this.transform.GetComponent<Renderer>().material.color = Color.green;
-            hoverEnter = false;
+    public void OnHover (string influencer) {
+
+        switch (influencer) {
+            case ("BLU"):
+                if (hoverEnter == true) {
+                    this.transform.GetComponent<Renderer>().material.color = Color.cyan;
+                    hoverEnter = false;
+                }
+                isHovering = true;
+                break;
+            case ("RED"):
+                if (hoverEnter == true) {
+                    this.transform.GetComponent<Renderer>().material.color = Color.magenta;
+                    hoverEnter = false;
+                }
+                isHovering = true;
+                break;
+            default:
+                if (hoverEnter == true) {
+                    this.transform.GetComponent<Renderer>().material.color = Color.green;
+                    hoverEnter = false;
+                }
+                isHovering = true;
+                break;
         }
-        isHovering = true; 
+
+
+       
     }
 
     public void FreeRoof() {

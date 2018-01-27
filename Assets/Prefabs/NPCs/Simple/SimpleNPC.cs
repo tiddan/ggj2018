@@ -17,6 +17,15 @@ public class SimpleNPC : MonoBehaviour {
     public AIState currentState = AIState.NeutralWalking;
 
 
+    public enum Influencer {
+        None,
+        RED,
+        BLU
+    }
+
+    public Influencer currentInfluence = Influencer.None;
+
+
     NavMeshAgent thisAgent;
 
     // Does the NavAgent have a target?
@@ -26,10 +35,10 @@ public class SimpleNPC : MonoBehaviour {
     public float blueInfluence = 0.0f;
     public float redInfluence = 0.0f;
     public float randomMaxRadius = 10.0f;
+    public float influenceDecayRate = 0.1f;
 
     public float waitTime = 3.0f;
     float timeLeft = 0.0f;
-
     
 	void Awake () {
         thisAgent = this.GetComponent<NavMeshAgent>();
@@ -60,12 +69,23 @@ public class SimpleNPC : MonoBehaviour {
                 break;
         }
 
-	}
+        if (redInfluence > 0) {
+            redInfluence -= influenceDecayRate * Time.deltaTime;
+        } else if (redInfluence < 0) {
+            redInfluence = 0;
+        }
+        if (blueInfluence > 0) {
+            blueInfluence -= influenceDecayRate * Time.deltaTime;
+        } else if (blueInfluence < 0) {
+            blueInfluence = 0;
+        }
+        UpdateInfluencer();
+    }
 
 
 
 
-    #region State methods
+    #region StateMethods
 
     void HandleNeutralWalkingState () {
         if (hasTarget == false) {
@@ -110,5 +130,78 @@ public class SimpleNPC : MonoBehaviour {
 
     #endregion
 
+
+    public void Influence(string faction, float value) {
         
+        switch (faction) {
+            case ("BLU"):
+                blueInfluence += value;
+                break;
+            case ("RED"):
+                redInfluence += value;
+                break;
+            default:
+                break;
+        }
+
+        UpdateInfluencer();
+        
+    }
+
+    public void UpdateInfluencer() {
+        switch (currentInfluence) {
+            case (Influencer.None):
+                if (blueInfluence > 1.0f && blueInfluence > redInfluence) {
+                    currentInfluence = Influencer.BLU;
+                    UpdateColor(Color.blue);
+                } else if (redInfluence > 1.0f) {
+                    currentInfluence = Influencer.RED;
+                    UpdateColor(Color.red);
+                }
+                break;
+            case (Influencer.BLU):
+                if (redInfluence > blueInfluence) {
+                    currentInfluence = Influencer.RED;
+                    UpdateColor(Color.red);
+                } else if (blueInfluence < 1.0f) {
+                    currentInfluence = Influencer.None;
+                    UpdateColor(Color.gray);
+                }
+                break;
+            case (Influencer.RED):
+                if (blueInfluence > redInfluence) {
+                    currentInfluence = Influencer.BLU;
+                    UpdateColor(Color.blue);
+                } else if (redInfluence < 1.0f) {
+                    currentInfluence = Influencer.None;
+                    UpdateColor(Color.gray);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    void UpdateColor(Color c) {
+        this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = c;
+    }
+
+    #region CommandCalls
+
+    public void WalkTo(Vector3 targetPosition) {
+
+    }
+
+    public void AttackTarget(GameObject target) {
+
+    }
+
+    public void BlockArea(Vector3 targetPosition) {
+
+    }
+
+    #endregion
+
+
+
 }

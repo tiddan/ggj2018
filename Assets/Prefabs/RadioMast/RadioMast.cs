@@ -7,6 +7,12 @@ public class RadioMast : MonoBehaviour {
     public float lifeTime = 10.0f;
     public float signalStrength = 10.0f;
     public float signalRadius = 10.0f;
+    public float signalFrequence = 1.0f;
+
+    public string thisOwner = "RED";
+
+    float pulseTimer = 0.0f;
+
 
 	// Use this for initialization
 	void Start () {
@@ -19,12 +25,23 @@ public class RadioMast : MonoBehaviour {
         if (lifeTime <= 0.0f) {
             DestroyMast();
         }
+
+        pulseTimer -= Time.deltaTime;
+
+        if(pulseTimer <= 0) {
+            Pulse();
+            pulseTimer = signalFrequence;
+        }
+       
+
 	}
 
-    public void SetParams(float _lifeTime, float _signalStrength, float _signalRadius) {
+    public void SetParams(string owner, float _lifeTime, float _signalStrength, float _signalRadius, float _pulseTimer) {
+        thisOwner = owner;
         lifeTime = _lifeTime;
         signalStrength = _signalStrength;
         signalRadius = _signalStrength;
+        pulseTimer = _pulseTimer;
     }
 
     public void DestroyMast () {
@@ -34,6 +51,21 @@ public class RadioMast : MonoBehaviour {
         
         Destroy(gameObject);
     }
+
+
+    void Pulse () {
+
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.root.position, signalRadius);
+        int i = 0;
+        while (i < hitColliders.Length) {
+            if (hitColliders[i].gameObject.tag == "NPC") {
+                hitColliders[i].gameObject.GetComponent<SimpleNPC>().Influence(thisOwner, 1.0f);
+            }
+            i++;
+        }
+
+    }
+    
 
 
 }

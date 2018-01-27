@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 1231629753547662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4694270566582484}
   - {fileID: 4104868993655910}
@@ -382,6 +382,8 @@ MonoBehaviour:
   lifeTime: 10
   signalStrength: 10
   signalRadius: 10
+  signalFrequence: 1
+  thisOwner: RED
 --- !u!135 &135777924183130022
 SphereCollider:
   m_ObjectHideFlags: 1
