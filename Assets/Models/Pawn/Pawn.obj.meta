@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 22e72439d59620140a850a320a1f5476
-timeCreated: 1517054031
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -13,6 +11,7 @@ ModelImporter:
     2300000: Cone001
     3300000: Cone001
     4300000: Cone001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -290,6 +290,7 @@
     <Compile Include="Assets\Prefabs\RadioMast\RadioMast.cs" />
     <Compile Include="Assets\Scripts\Camera\RTSCamera.cs" />
     <Compile Include="Assets\Scripts\DummyScr.cs" />
+    <Compile Include="Assets\Scripts\TestPlayerController.cs" />
     <Compile Include="Assets\SFX\DummySFX.cs" />
     <Compile Include="Assets\Sprites\DummySpr.cs" />
   </ItemGroup>
