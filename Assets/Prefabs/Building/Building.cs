@@ -45,6 +45,7 @@ public class Building : MonoBehaviour {
 
         if (!hasRadioMastOn) {
             GameObject RM = Instantiate(radioMast, RadioMastAnchorPoint.position, RadioMastAnchorPoint.rotation);
+            RM.GetComponent<RadioMast>().SetOwner(influencer);
             RM.transform.SetParent(this.transform);
             hasRadioMastOn = true;
         }
