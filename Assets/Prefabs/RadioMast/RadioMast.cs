@@ -77,7 +77,7 @@ public class RadioMast : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    s
+    
     void Pulse () {
 
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.parent.position, signalRadius);

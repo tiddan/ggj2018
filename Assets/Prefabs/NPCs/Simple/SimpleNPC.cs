@@ -256,7 +256,7 @@ public class SimpleNPC : MonoBehaviour {
         else
         {
             renderer.material.color = c;
-            renderer.material.SetColor("_Emission",c);
+            renderer.material.SetColor("_EmissionColor", c);
             renderer.enabled = true;
         }
     }
