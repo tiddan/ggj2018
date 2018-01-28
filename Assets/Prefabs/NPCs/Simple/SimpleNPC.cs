@@ -206,10 +206,12 @@ public class SimpleNPC : MonoBehaviour {
                 if (blueInfluence > 1.0f && blueInfluence > redInfluence) {
                     currentInfluence = Influencer.BLU;
                     UpdateColor(blue);
+                    UIController.instance.UpdateBluCrowd(1);
                     return true;
                 } else if (redInfluence > 1.0f) {
                     currentInfluence = Influencer.RED;
                     UpdateColor(red);
+                    UIController.instance.UpdateRedCrowd(1);
                     return true;
                 }
                 return false;
@@ -217,10 +219,13 @@ public class SimpleNPC : MonoBehaviour {
                 if (redInfluence > blueInfluence) {
                     currentInfluence = Influencer.RED;
                     UpdateColor(red);
+                    UIController.instance.UpdateBluCrowd(-1);
+                    UIController.instance.UpdateRedCrowd(1);
                     return true;
                 } else if (blueInfluence < 1.0f) {
                     currentInfluence = Influencer.None;
                     UpdateColor(Color.white);
+                    UIController.instance.UpdateBluCrowd(-1);
                     return true;
                 }
                 return false;
@@ -228,10 +233,13 @@ public class SimpleNPC : MonoBehaviour {
                 if (blueInfluence > redInfluence) {
                     currentInfluence = Influencer.BLU;
                     UpdateColor(blue);
+                    UIController.instance.UpdateBluCrowd(1);
+                    UIController.instance.UpdateRedCrowd(-1);
                     return true;
                 } else if (redInfluence < 1.0f) {
                     currentInfluence = Influencer.None;
                     UpdateColor(Color.white);
+                    UIController.instance.UpdateRedCrowd(-1);
                     return true;
                 }
                 return false;
@@ -262,7 +270,8 @@ public class SimpleNPC : MonoBehaviour {
     }
 
     public void AttackTarget(GameObject target) {
-
+        attackTarget = target;
+        currentState = AIState.Attacking;
     }
 
     public void DefendArea(Vector3 targetPosition) {
