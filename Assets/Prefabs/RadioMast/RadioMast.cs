@@ -50,6 +50,7 @@ public class RadioMast : MonoBehaviour {
         var lr = GameObject.Instantiate(LinePrefab, Vector3.zero, Quaternion.identity);
         var ls = lr.GetComponent<LineScript>();
         ls.Configure(owner=="RED" ? RedOrigin : BluOrigin,transform.position,owner);
+        transform.GetComponentInChildren<Light>().color = owner == "RED" ? Color.red : Color.blue;
     }
 
     //public void SetParams(string owner, float _lifeTime, float _signalStrength, float _signalRadius, float _pulseTimer) {
