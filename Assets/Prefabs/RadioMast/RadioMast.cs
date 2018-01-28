@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class RadioMast : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class RadioMast : MonoBehaviour {
     public float signalFrequence = 1.0f;
 
     public string thisOwner = "RED";
+    public Vector3 RedOrigin, BluOrigin;
+    public GameObject LinePrefab;
 
     float pulseTimer = 0.0f;
 
@@ -43,6 +46,10 @@ public class RadioMast : MonoBehaviour {
         ps.startColor = owner == "RED"
             ? new Color(1.0f, 0.25f, 0.25f)
             : new Color(0.25f, 0.25f, 1.0f);
+
+        var lr = GameObject.Instantiate(LinePrefab, Vector3.zero, Quaternion.identity);
+        var ls = lr.GetComponent<LineScript>();
+        ls.Configure(owner=="RED" ? RedOrigin : BluOrigin,transform.position,owner);
     }
 
     //public void SetParams(string owner, float _lifeTime, float _signalStrength, float _signalRadius, float _pulseTimer) {

@@ -217,6 +217,9 @@ MonoBehaviour:
   signalRadius: 50
   signalFrequence: 1
   thisOwner: RED
+  RedOrigin: {fileID: 0}
+  BluOrigin: {fileID: 0}
+  LinePrefab: {fileID: 1384801522361818, guid: 2a9e92f7ffe8ba04fba1e710ce6c0017, type: 2}
 --- !u!198 &198843399031613084
 ParticleSystem:
   m_ObjectHideFlags: 1
