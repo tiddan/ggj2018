@@ -4890,7 +4890,7 @@ Prefab:
     - target: {fileID: 20775451523302566, guid: 3d3a61d1281ddba449d788ddd34876a9,
         type: 2}
       propertyPath: field of view
-      value: 65
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 114244468037393362, guid: 3d3a61d1281ddba449d788ddd34876a9,
         type: 2}
@@ -30383,7 +30383,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1599153402}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3dfbb83a80b07144ab1132daaaac6d15, type: 2}
   m_CullingMode: 0
@@ -30393,6 +30393,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1599153409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1599153402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94611793ec2f024abc2fea9576494e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Center: {x: 0, y: 0, z: 0}
+  Radius: 70
+  Speed: 0.02
+  Height: 80
 --- !u!1001 &1601964720
 Prefab:
   m_ObjectHideFlags: 0
