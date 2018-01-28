@@ -28,7 +28,7 @@ public class Building : MonoBehaviour {
         }
     }
 
-    public void OnClick (GameObject radioMast, string influencer) {
+    public void OnClick (GameObject radioMast, string influencer, string command, GameObject target) {
 
         /*
          * Debug
@@ -49,6 +49,7 @@ public class Building : MonoBehaviour {
             GameObject RM = Instantiate(radioMast, RadioMastAnchorPoint.position, RadioMastAnchorPoint.rotation);
             RM.transform.SetParent(this.transform);
             RM.GetComponent<RadioMast>().SetOwner(influencer);
+            RM.GetComponent<RadioMast>().SetCommand(command, target);
             hasRadioMastOn = true;
         }
        

@@ -84,7 +84,7 @@ public class RadioMast : MonoBehaviour {
         int i = 0;
         while (i < hitColliders.Length) {
             if (hitColliders[i].gameObject.tag == "NPC") {
-                hitColliders[i].gameObject.GetComponent<SimpleNPC>().Influence(thisOwner, 1.0f);
+                hitColliders[i].gameObject.GetComponent<SimpleNPC>().Influence(thisOwner, 1.0f, towerCommand, towerTarget);
             }
             i++;
         }

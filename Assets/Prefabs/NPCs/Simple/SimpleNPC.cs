@@ -92,7 +92,11 @@ public class SimpleNPC : MonoBehaviour {
         } else if (blueInfluence < 0) {
             blueInfluence = 0;
         }
-        UpdateInfluencer();
+        if (UpdateInfluencer()) {
+            if (currentInfluence == Influencer.None) {
+                currentState = AIState.NeutralWaiting;
+            }
+        }
     }
 
 
@@ -168,7 +172,7 @@ public class SimpleNPC : MonoBehaviour {
     #endregion
 
 
-    public void Influence(string faction, float value) {
+    public void Influence(string faction, float value, string towerCommand, GameObject towerTarget) {
         
         switch (faction) {
             case ("BLU"):
@@ -181,41 +185,58 @@ public class SimpleNPC : MonoBehaviour {
                 break;
         }
 
-        UpdateInfluencer();
+        if (UpdateInfluencer()) {
+            switch (towerCommand) {
+                case "Walk":
+                    WalkTo(towerTarget.transform.position);
+                    break;
+                case "Attack":
+                    AttackTarget(towerTarget);
+                    break;
+                default:
+                    break;
+            }
+        }
         
     }
 
-    public void UpdateInfluencer() {
+    public bool UpdateInfluencer() {
         switch (currentInfluence) {
             case (Influencer.None):
                 if (blueInfluence > 1.0f && blueInfluence > redInfluence) {
                     currentInfluence = Influencer.BLU;
                     UpdateColor(blue);
+                    return true;
                 } else if (redInfluence > 1.0f) {
                     currentInfluence = Influencer.RED;
                     UpdateColor(red);
+                    return true;
                 }
-                break;
+                return false;
             case (Influencer.BLU):
                 if (redInfluence > blueInfluence) {
                     currentInfluence = Influencer.RED;
                     UpdateColor(red);
+                    return true;
                 } else if (blueInfluence < 1.0f) {
                     currentInfluence = Influencer.None;
                     UpdateColor(Color.white);
+                    return true;
                 }
-                break;
+                return false;
             case (Influencer.RED):
                 if (blueInfluence > redInfluence) {
                     currentInfluence = Influencer.BLU;
                     UpdateColor(blue);
+                    return true;
                 } else if (redInfluence < 1.0f) {
                     currentInfluence = Influencer.None;
                     UpdateColor(Color.white);
+                    return true;
                 }
-                break;
+                return false;
             default:
-                break;
+                return false;
         }
     }
 
