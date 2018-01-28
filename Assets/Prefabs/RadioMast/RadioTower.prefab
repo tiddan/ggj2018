@@ -320,7 +320,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
@@ -338,9 +338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f386977668d8d4cb817a98e18ad255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 60
+  lifeTime: 30
   signalStrength: 10
-  signalRadius: 50
+  signalRadius: 20
   signalFrequence: 1
   thisOwner: RED
   RedOrigin: {x: 6.526, y: 35.819, z: 69.31}
