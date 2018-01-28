@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4542073602269006}
   - component: {fileID: 120110923575908148}
+  - component: {fileID: 114001869690555890}
   m_Layer: 0
   m_Name: LinePrefab
   m_TagString: Untagged
@@ -40,6 +41,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114001869690555890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384801522361818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a987a1e6840e41847852586dc59e5275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Origin: {x: 0, y: 0, z: 0}
+  Destination: {x: 0, y: 0, z: 0}
 --- !u!120 &120110923575908148
 LineRenderer:
   m_ObjectHideFlags: 1
