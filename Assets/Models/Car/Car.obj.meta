@@ -1,30 +1,18 @@
 fileFormatVersion: 2
-guid: cfac5f3856a40eb43822f97d5d383d2d
-timeCreated: 1517052147
+guid: 3415326a70ab0cf43be0c8ad74bf820e
+timeCreated: 1517144494
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Headquarter
+    100000: Car
     100002: //RootNode
-    100004: Headquarter_ColorGeometry
-    100006: Floor
-    400000: Headquarter
+    400000: Car
     400002: //RootNode
-    400004: Headquarter_ColorGeometry
-    400006: Floor
-    2100000: Headquarter
-    2100002: Headquarter_ColorGeometry
-    2100004: Floor
-    2300000: Headquarter
-    2300002: Headquarter_ColorGeometry
-    2300004: Floor
-    3300000: Headquarter
-    3300002: Headquarter_ColorGeometry
-    3300004: Floor
-    4300000: Headquarter
-    4300002: Headquarter_ColorGeometry
-    4300004: Floor
+    2100000: Car
+    2300000: Car
+    3300000: Car
+    4300000: Car
   externalObjects: {}
   materials:
     importMaterials: 1
