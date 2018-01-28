@@ -707,7 +707,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1670894078087232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -25.6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4978136304239340}
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   currentState: 0
   currentInfluence: 0
   renderer: {fileID: 137469761276798596}
-  maxSpeed: 1
+  maxSpeed: 5
   blueInfluence: 0
   redInfluence: 0
   randomMaxRadius: 60
@@ -1216,7 +1216,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.2
-  m_Speed: 1
+  m_Speed: 5
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 1000
