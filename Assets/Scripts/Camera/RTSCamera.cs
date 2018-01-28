@@ -52,7 +52,7 @@ public class RTSCamera : MonoBehaviour {
             Debug.DrawLine(Camera.main.ScreenPointToRay(Input.mousePosition).origin, hit.point, Color.blue, 1.0f);
 
             if (hit.transform.tag == "Building") {
-                hit.transform.GetComponent<Building>().OnClick(radioMastPrefab, "RED");
+                //hit.transform.GetComponent<Building>().OnClick(radioMastPrefab, "RED");
             }
         }
     }

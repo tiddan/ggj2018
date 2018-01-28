@@ -8,17 +8,23 @@ ModelImporter:
     100000: Headquarter
     100002: //RootNode
     100004: Headquarter_ColorGeometry
+    100006: Floor
     400000: Headquarter
     400002: //RootNode
     400004: Headquarter_ColorGeometry
+    400006: Floor
     2100000: Headquarter
     2100002: Headquarter_ColorGeometry
+    2100004: Floor
     2300000: Headquarter
     2300002: Headquarter_ColorGeometry
+    2300004: Floor
     3300000: Headquarter
     3300002: Headquarter_ColorGeometry
+    3300004: Floor
     4300000: Headquarter
     4300002: Headquarter_ColorGeometry
+    4300004: Floor
   externalObjects: {}
   materials:
     importMaterials: 1

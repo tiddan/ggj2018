@@ -11,7 +11,7 @@ public class MultiPlayerCamera : MonoBehaviour
     public LayerMask hitMask;
 
     public GameObject BLUPointer, REDPointer;
-
+    public GameObject BLUTarget, REDTarget;
 
     public GameObject radioMastPrefab;
 
@@ -44,8 +44,14 @@ public class MultiPlayerCamera : MonoBehaviour
         if(Input.GetKeyDown("r")) {
             OnClick(BLUray, "BLU");
         }
+        if (Input.GetKeyDown("e")) {
+            SetBLUTarget(BLUray);
+        }
         if(Input.GetKeyDown(KeyCode.RightControl)) {
             OnClick(REDray, "RED");
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift)) {
+            SetREDTarget(REDray);
         }
 
         /* Camera change (4 fun) */
@@ -98,8 +104,6 @@ public class MultiPlayerCamera : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow)) {
             REDPointer.GetComponent<RectTransform>().transform.Translate(Vector3.down * Time.deltaTime * 200.0f);
         }
-
-
     }
 
 
@@ -133,7 +137,37 @@ public class MultiPlayerCamera : MonoBehaviour
             Debug.DrawLine(Camera.main.ScreenPointToRay(Input.mousePosition).origin, hit.point, Color.blue, 1.0f);
 
             if (hit.transform.tag == "Building") {
-                hit.transform.GetComponent<Building>().OnClick(radioMastPrefab, player);
+                switch (player) {
+                    case "BLU":
+                        hit.transform.GetComponent<Building>().OnClick(radioMastPrefab, player, "Attack", BLUTarget);
+                        break;
+                    case "RED":
+                        hit.transform.GetComponent<Building>().OnClick(radioMastPrefab, player, "Attack", REDTarget);
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+        }
+    }
+
+    public void SetBLUTarget (Ray ray) {
+        RaycastHit hit;
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, maxRange, hitMask)) {
+
+            if (hit.transform.tag == "Building") {
+                BLUTarget = hit.transform.gameObject;
+            }
+        }
+    }
+
+    public void SetREDTarget (Ray ray) {
+        RaycastHit hit;
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, maxRange, hitMask)) {
+
+            if (hit.transform.tag == "Building") {
+                REDTarget = hit.transform.gameObject;
             }
         }
     }
