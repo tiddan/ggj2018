@@ -7,6 +7,10 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
 
+    public static UIController instance = null;
+
+
+
     public float RedBuildPointPercent, BlueBuildPointPercent;
     public int RedBuildPoints, BlueBuildPoints;
     public int RedCrowd, BlueCrowd;
@@ -17,6 +21,14 @@ public class UIController : MonoBehaviour
     void FixedUpdate()
     {
         UpdateCanvas();
+    }
+
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+        } if (instance != this) {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
@@ -46,4 +58,13 @@ public class UIController : MonoBehaviour
         RedCrowdText.text = "CROWD: " + RedCrowd;
         BlueCrowdText.text = "CROWD: " + BlueCrowd;
     } 
+
+
+    public void UpdateRedCrowd (int i) {
+        RedCrowd += i;
+    }
+
+    public void UpdateBluCrowd (int i) {
+        BlueCrowd += i;
+    }
 }
