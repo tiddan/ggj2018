@@ -46,6 +46,7 @@ public class SimpleNPC : MonoBehaviour {
 
     GameObject attackTarget;
     bool isAttackingTarget = false;
+    bool hasAttackPath = false;
 
 	void Awake () {
         thisAgent = this.GetComponent<NavMeshAgent>();
@@ -140,8 +141,13 @@ public class SimpleNPC : MonoBehaviour {
         if (attackTarget != null && !isAttackingTarget) {
             if (Vector3.Distance(this.transform.position, attackTarget.transform.position) < 1.0f) {
                 StartAttack();
-            } else {
-
+            } else if (!hasAttackPath) {
+                NavMeshHit hit;
+                NavMesh.SamplePosition(attackTarget.transform.position, out hit, 1.0f, 1);
+                Vector3 finalPosition = hit.position;
+                thisAgent.SetDestination(finalPosition);
+            } else if (hasAttackPath && thisAgent.remainingDistance < 1.0f) {
+                hasAttackPath = false;
             }
         } else if (isAttackingTarget) {
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")) {

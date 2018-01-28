@@ -16,6 +16,8 @@ public class RadioMast : MonoBehaviour {
 
     float pulseTimer = 0.0f;
 
+    public string towerCommand;
+    public GameObject towerTarget;
 
 	// Use this for initialization
 	void Start () {
@@ -54,6 +56,11 @@ public class RadioMast : MonoBehaviour {
         transform.GetComponentInChildren<Light>().color = owner == "RED" ? Color.red : Color.blue;
     }
 
+    public void SetCommand(string command, GameObject target) {
+        towerCommand = command;
+        towerTarget = target;
+    }
+
     //public void SetParams(string owner, float _lifeTime, float _signalStrength, float _signalRadius, float _pulseTimer) {
     //    thisOwner = owner;
     //    lifeTime = _lifeTime;
@@ -84,6 +91,5 @@ public class RadioMast : MonoBehaviour {
 
     }
     
-
 
 }
