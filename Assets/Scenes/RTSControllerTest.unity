@@ -162,10 +162,6 @@ Prefab:
       propertyPath: REDPointer
       value: 
       objectReference: {fileID: 775589860}
-    - target: {fileID: 1005802310669918, guid: 3d3a61d1281ddba449d788ddd34876a9, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d3a61d1281ddba449d788ddd34876a9, type: 2}
   m_IsPrefabParent: 0
