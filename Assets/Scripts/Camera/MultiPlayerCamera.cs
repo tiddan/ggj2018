@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiPlayerCamera : MonoBehaviour {
-
+public class MultiPlayerCamera : MonoBehaviour
+{
+    private Animator cameraAnimator;
 
     public float maxRange = 1000f;
 
@@ -14,11 +15,15 @@ public class MultiPlayerCamera : MonoBehaviour {
 
     public GameObject radioMastPrefab;
 
+    void Awake()
+    {
+        cameraAnimator = GetComponent<Animator>();
+    }
 
 
 	// Use this for initialization
 	void Start () {
-		
+	
 	}
 	
 	// Update is called once per frame
@@ -42,6 +47,23 @@ public class MultiPlayerCamera : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.RightControl)) {
             OnClick(REDray, "RED");
         }
+
+        /* Camera change (4 fun) */
+	    if (Input.GetKeyUp(KeyCode.F1))
+	    {
+	        cameraAnimator.enabled = false;
+	        cameraAnimator.SetTrigger("ShowCamera0");
+	    }
+	    if (Input.GetKeyUp(KeyCode.F2))
+	    {
+	        cameraAnimator.enabled = true;
+            cameraAnimator.SetTrigger("ShowCamera1");
+	    }
+	    if (Input.GetKeyUp(KeyCode.F3))
+	    {
+	        cameraAnimator.enabled = true;
+            cameraAnimator.SetTrigger("ShowCamera2");
+	    }
 
     }
 

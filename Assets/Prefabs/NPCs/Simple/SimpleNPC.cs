@@ -27,6 +27,9 @@ public class SimpleNPC : MonoBehaviour {
 
 
     NavMeshAgent thisAgent;
+    Animator animator;
+    private Color blue, red;
+    public MeshRenderer renderer;
 
     // Does the NavAgent have a target?
     bool hasTarget = false;
@@ -42,6 +45,11 @@ public class SimpleNPC : MonoBehaviour {
     
 	void Awake () {
         thisAgent = this.GetComponent<NavMeshAgent>();
+	    animator = this.GetComponent<Animator>();
+        //blue = new Color(0.3f,0.3f,1.0f);
+        //red = new Color(1.0f,0.3f,0.3f);
+	    blue = Color.blue;
+	    red = Color.red;
 	}
 	
 	void Update () {
@@ -88,6 +96,9 @@ public class SimpleNPC : MonoBehaviour {
     #region StateMethods
 
     void HandleNeutralWalkingState () {
+
+
+
         if (hasTarget == false) {
             Vector3 randomDirection = Random.insideUnitSphere * randomMaxRadius;
             NavMeshHit hit;
@@ -100,6 +111,7 @@ public class SimpleNPC : MonoBehaviour {
         if (thisAgent.hasPath && thisAgent.remainingDistance < 0.1f) {
             timeLeft = waitTime;
             currentState = AIState.NeutralWaiting;
+            animator.SetTrigger("GoIdle");
         }
     }
 
@@ -108,6 +120,7 @@ public class SimpleNPC : MonoBehaviour {
         if (timeLeft <= 0) {
             currentState = AIState.NeutralWalking;
             hasTarget = false;
+            animator.SetTrigger("GoWalk");
         }
     }
 
@@ -153,28 +166,28 @@ public class SimpleNPC : MonoBehaviour {
             case (Influencer.None):
                 if (blueInfluence > 1.0f && blueInfluence > redInfluence) {
                     currentInfluence = Influencer.BLU;
-                    UpdateColor(Color.blue);
+                    UpdateColor(blue);
                 } else if (redInfluence > 1.0f) {
                     currentInfluence = Influencer.RED;
-                    UpdateColor(Color.red);
+                    UpdateColor(red);
                 }
                 break;
             case (Influencer.BLU):
                 if (redInfluence > blueInfluence) {
                     currentInfluence = Influencer.RED;
-                    UpdateColor(Color.red);
+                    UpdateColor(red);
                 } else if (blueInfluence < 1.0f) {
                     currentInfluence = Influencer.None;
-                    UpdateColor(Color.gray);
+                    UpdateColor(Color.white);
                 }
                 break;
             case (Influencer.RED):
                 if (blueInfluence > redInfluence) {
                     currentInfluence = Influencer.BLU;
-                    UpdateColor(Color.blue);
+                    UpdateColor(blue);
                 } else if (redInfluence < 1.0f) {
                     currentInfluence = Influencer.None;
-                    UpdateColor(Color.gray);
+                    UpdateColor(Color.white);
                 }
                 break;
             default:
@@ -183,7 +196,15 @@ public class SimpleNPC : MonoBehaviour {
     }
 
     void UpdateColor(Color c) {
-        this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color = c;
+        if (c != blue && c != red)
+        {
+            renderer.enabled = false;
+        }
+        else
+        {
+            renderer.material.color = c;
+            renderer.enabled = true;
+        }
     }
 
     #region CommandCalls

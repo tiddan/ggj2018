@@ -36,13 +36,22 @@ public class RadioMast : MonoBehaviour {
 
 	}
 
-    public void SetParams(string owner, float _lifeTime, float _signalStrength, float _signalRadius, float _pulseTimer) {
+    public void SetOwner(string owner)
+    {
         thisOwner = owner;
-        lifeTime = _lifeTime;
-        signalStrength = _signalStrength;
-        signalRadius = _signalStrength;
-        pulseTimer = _pulseTimer;
+        var ps = GetComponentInChildren<ParticleSystem>().main;
+        ps.startColor = owner == "RED"
+            ? new Color(1.0f, 0.25f, 0.25f)
+            : new Color(0.25f, 0.25f, 1.0f);
     }
+
+    //public void SetParams(string owner, float _lifeTime, float _signalStrength, float _signalRadius, float _pulseTimer) {
+    //    thisOwner = owner;
+    //    lifeTime = _lifeTime;
+    //    signalStrength = _signalStrength;
+    //    signalRadius = _signalStrength;
+    //    pulseTimer = _pulseTimer;
+    //}
 
     public void DestroyMast () {
         if (this.transform.parent != null) {
