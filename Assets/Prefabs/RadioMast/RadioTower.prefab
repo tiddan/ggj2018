@@ -212,9 +212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f386977668d8d4cb817a98e18ad255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
+  lifeTime: 60
   signalStrength: 10
-  signalRadius: 10
+  signalRadius: 50
   signalFrequence: 1
   thisOwner: RED
 --- !u!198 &198843399031613084

@@ -29,7 +29,7 @@ public class SimpleNPC : MonoBehaviour {
     NavMeshAgent thisAgent;
     Animator animator;
     private Color blue, red;
-    public SkinnedMeshRenderer renderer;
+    public MeshRenderer renderer;
 
     // Does the NavAgent have a target?
     bool hasTarget = false;
@@ -46,8 +46,10 @@ public class SimpleNPC : MonoBehaviour {
 	void Awake () {
         thisAgent = this.GetComponent<NavMeshAgent>();
 	    animator = this.GetComponent<Animator>();
-        blue = new Color(0.3f,0.3f,1.0f);
-        red = new Color(1.0f,0.3f,0.3f);
+        //blue = new Color(0.3f,0.3f,1.0f);
+        //red = new Color(1.0f,0.3f,0.3f);
+	    blue = Color.blue;
+	    red = Color.red;
 	}
 	
 	void Update () {
@@ -194,7 +196,15 @@ public class SimpleNPC : MonoBehaviour {
     }
 
     void UpdateColor(Color c) {
-        renderer.material.color = c;
+        if (c != blue && c != red)
+        {
+            renderer.enabled = false;
+        }
+        else
+        {
+            renderer.material.color = c;
+            renderer.enabled = true;
+        }
     }
 
     #region CommandCalls
