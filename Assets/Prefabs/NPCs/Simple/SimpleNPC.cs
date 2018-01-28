@@ -42,7 +42,11 @@ public class SimpleNPC : MonoBehaviour {
 
     public float waitTime = 3.0f;
     float timeLeft = 0.0f;
-    
+
+
+    GameObject attackTarget;
+    bool isAttackingTarget = false;
+
 	void Awake () {
         thisAgent = this.GetComponent<NavMeshAgent>();
 	    animator = this.GetComponent<Animator>();
@@ -125,11 +129,25 @@ public class SimpleNPC : MonoBehaviour {
     }
 
     void HandleWalkingState () {
-
+        if (thisAgent.hasPath && thisAgent.remainingDistance < 0.1f) {
+            timeLeft = waitTime;
+            currentState = AIState.Waiting;
+            animator.SetTrigger("GoIdle");
+        }
     }
 
     void HandleAttackingState () {
+        if (attackTarget != null && !isAttackingTarget) {
+            if (Vector3.Distance(this.transform.position, attackTarget.transform.position) < 1.0f) {
+                StartAttack();
+            } else {
 
+            }
+        } else if (isAttackingTarget) {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")) {
+
+            }
+        }
     }
 
     void HandleWaitingState () {
@@ -210,18 +228,27 @@ public class SimpleNPC : MonoBehaviour {
     #region CommandCalls
 
     public void WalkTo(Vector3 targetPosition) {
-
+        NavMeshHit hit;
+        NavMesh.SamplePosition(targetPosition, out hit, 1.0f, 1);
+        Vector3 finalPosition = hit.position;
+        thisAgent.SetDestination(finalPosition);
     }
 
     public void AttackTarget(GameObject target) {
 
     }
 
-    public void BlockArea(Vector3 targetPosition) {
+    public void DefendArea(Vector3 targetPosition) {
 
     }
 
     #endregion
+
+    void StartAttack() {
+        thisAgent.isStopped = true;
+        animator.SetTrigger("GoAttack1");
+        isAttackingTarget = true;
+    }
 
 
 

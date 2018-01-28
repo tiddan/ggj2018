@@ -54,6 +54,7 @@ ModelImporter:
     7400000: Default Take
     7400002: Idle
     7400004: Walk
+    7400006: Attack1
     9500000: //RootNode
     13700000: Agent_v2
   externalObjects: {}
