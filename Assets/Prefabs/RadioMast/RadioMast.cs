@@ -48,6 +48,7 @@ public class RadioMast : MonoBehaviour {
             : new Color(0.25f, 0.25f, 1.0f);
 
         var lr = GameObject.Instantiate(LinePrefab, Vector3.zero, Quaternion.identity);
+        lr.transform.SetParent(this.transform);
         var ls = lr.GetComponent<LineScript>();
         ls.Configure(owner=="RED" ? RedOrigin : BluOrigin,transform.position,owner);
         transform.GetComponentInChildren<Light>().color = owner == "RED" ? Color.red : Color.blue;
