@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f386977668d8d4cb817a98e18ad255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 30
+  lifeTime: 15
   signalStrength: 10
   signalRadius: 20
   signalFrequence: 1

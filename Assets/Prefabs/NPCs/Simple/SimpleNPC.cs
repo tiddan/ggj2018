@@ -153,10 +153,23 @@ public class SimpleNPC : MonoBehaviour {
             } else if (hasAttackPath && thisAgent.remainingDistance < 1.0f) {
                 hasAttackPath = false;
             }
-        } else if (isAttackingTarget) {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")) {
+        } else if (isAttackingTarget)
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+            {
 
             }
+        }
+        else
+        {
+            Vector3 randomDirection = Random.insideUnitSphere * randomMaxRadius;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomDirection, out hit, randomMaxRadius, 1);
+            Vector3 finalPosition = hit.position;
+            thisAgent.SetDestination(finalPosition);
+
+            hasTarget = false;
+            currentState = AIState.Walking;
         }
     }
 

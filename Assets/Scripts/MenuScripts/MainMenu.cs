@@ -8,13 +8,13 @@ public class MainMenu : MonoBehaviour {
 
     public void StartSinglePlayer() {
 
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene("City3");
 
     }
 
     public void StartMultiplayer () {
 
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("City3");
 
     }
 

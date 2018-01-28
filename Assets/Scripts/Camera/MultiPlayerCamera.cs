@@ -57,17 +57,17 @@ public class MultiPlayerCamera : MonoBehaviour
         /* Camera change (4 fun) */
 	    if (Input.GetKeyUp(KeyCode.F1))
 	    {
-	        cameraAnimator.enabled = false;
+	        //cameraAnimator.enabled = false;
 	        cameraAnimator.SetTrigger("ShowCamera0");
 	    }
 	    if (Input.GetKeyUp(KeyCode.F2))
 	    {
-	        cameraAnimator.enabled = true;
+	        //cameraAnimator.enabled = true;
             cameraAnimator.SetTrigger("ShowCamera1");
 	    }
 	    if (Input.GetKeyUp(KeyCode.F3))
 	    {
-	        cameraAnimator.enabled = true;
+	        //cameraAnimator.enabled = true;
             cameraAnimator.SetTrigger("ShowCamera2");
 	    }
 
